@@ -16,27 +16,27 @@ pipeline {
            }
         }
 
-        stage('Build Docker'){
-            steps{
-                script{
-                    sh '''
-                    echo 'Buid Docker Image'
-                    docker build -t bharatjoshidocker/cicd-e2e:${BUILD_NUMBER} .
-                    '''
-                }
-            }
-        }
+        // stage('Build Docker'){
+        //     steps{
+        //         script{
+        //             sh '''
+        //             echo 'Buid Docker Image'
+        //             docker build -t bharatjoshidocker/cicd-e2e:${BUILD_NUMBER} .
+        //             '''
+        //         }
+        //     }
+        // }
 
-        stage('Push the artifacts'){
-           steps{
-                script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push bharatjoshidocker/cicd-e2e:${BUILD_NUMBER}
-                    '''
-                }
-            }
-        }
+        // stage('Push the artifacts'){
+        //    steps{
+        //         script{
+        //             sh '''
+        //             echo 'Push to Repo'
+        //             docker push bharatjoshidocker/cicd-e2e:${BUILD_NUMBER}
+        //             '''
+        //         }
+        //     }
+        // }
         
         // stage('Checkout K8S manifest SCM'){
         //     steps {
