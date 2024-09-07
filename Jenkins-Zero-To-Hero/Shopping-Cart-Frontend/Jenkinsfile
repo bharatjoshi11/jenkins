@@ -27,15 +27,14 @@ pipeline {
             }
         }
 
-        stage('Push the artifacts'){
-           steps{
-                script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push bharatjoshidocker/frontend:${BUILD_NUMBER}
-                    '''
-                }
+        stage('Docker Push') {
+      
+            steps {
+              withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+              sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+              sh 'docker push shanem/spring-petclinic:latest'
             }
+      
         }
         
         // stage('Checkout K8S manifest SCM'){
