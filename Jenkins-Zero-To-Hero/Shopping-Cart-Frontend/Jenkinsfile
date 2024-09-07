@@ -21,22 +21,22 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t bharatjoshidocker/cicd-e2e:${BUILD_NUMBER} ./Jenkins-Zero-To-Hero/Shopping-Cart-Frontend
+                    docker build -t bharatjoshidocker/frontend:${BUILD_NUMBER} ./Jenkins-Zero-To-Hero/Shopping-Cart-Frontend
                     '''
                 }
             }
         }
 
-        // stage('Push the artifacts'){
-        //    steps{
-        //         script{
-        //             sh '''
-        //             echo 'Push to Repo'
-        //             docker push bharatjoshidocker/cicd-e2e:${BUILD_NUMBER}
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('Push the artifacts'){
+           steps{
+                script{
+                    sh '''
+                    echo 'Push to Repo'
+                    docker push bharatjoshidocker/frontend:${BUILD_NUMBER}
+                    '''
+                }
+            }
+        }
         
         // stage('Checkout K8S manifest SCM'){
         //     steps {
