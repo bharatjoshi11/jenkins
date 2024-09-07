@@ -30,9 +30,9 @@ pipeline {
         stage('Docker Push') {
       
             steps {
-              withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-              sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-              sh 'docker push shanem/spring-petclinic:latest'
+              withCredentials([usernamePassword(credentialsId: 'dockerhubid', passwordVariable: 'dockerhubidPassword', usernameVariable: 'dockerhubidUser')]) {
+              sh "docker login -u ${env.dockerhubidUser} -p ${env.dockerhubidPassword}"
+              sh 'docker push bharatjoshidocker/frontend:${BUILD_NUMBER}'
             }
       
         }
